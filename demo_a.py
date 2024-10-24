@@ -11,7 +11,7 @@ motion = Motion()
 device = Device()
 speech = Speech()
 # speech.SAPI_HOST = 'https://oe-sapi.circul.us/v1'
-VOLUME = 30
+VOLUME = 100
 PLAY = False
 os.system('mkdir -p mp3')
 
