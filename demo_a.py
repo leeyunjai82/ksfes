@@ -56,5 +56,5 @@ while True:
   PLAY and talk('자, 이제 신나는 디지털 모험을 떠나볼까요? - 출 발 ', 'mp3/tts1_9.mp3', ["hand1", "hand2", "hand3", "hand4"])
     
   PLAY and motion.set_motion('greeting')
-  motion.set_motors([0, 0, -80, 0, 0, 0, 0, 0, 80, 0], 2000)
+  motion.set_motors([0,0,-70,-25,0,0,0,0,70,25], 2000)
   time.sleep(2)
