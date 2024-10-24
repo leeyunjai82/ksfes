@@ -57,4 +57,4 @@ while True:
     
   PLAY and motion.set_motion('greeting')
   motion.set_motors([0, 0, -80, 0, 0, 0, 0, 0, 80, 0], 2000)
-  time.sleep(1)
+  time.sleep(2)
