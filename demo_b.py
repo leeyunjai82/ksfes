@@ -78,7 +78,8 @@ async def handle_touch_event():
   await talk('이 곳에는 디지털 새-싹들이 발굴한, 보물 들을 만나볼 수 있는데요.', 'mp3/tts2_1.mp3', ["clapping1", "clapping2"])
   await talk('이 보물 들은 전국 코드 대회에서 빛난 열 개 팀의 놀라운 아이디어의 결과물 이-에요.', 'mp3/tts2_2.mp3', ["speak_r1","speak_r2", "speak_l1","speak_l2"])
   await talk('여러 분도  나도 한 번 해볼까? 하는 생각이 들죠?', 'mp3/tts2_3.mp3', ["hand1","hand2", "hand3","hand4"])
-  asyncio.sleep(3)
+  motion.stop()
+  await asyncio.sleep(3)
   motion.set_motors([0,0,-70,-25,0,0,0,0,70,25], 2000)
   PLAY = False
     
