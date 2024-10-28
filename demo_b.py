@@ -48,8 +48,8 @@ async def handle_input(sid):
   
 async def touch_sensor_monitor():
   motion.set_motion('stop')
+  device.eye_on(50,255,255)
   while True:
-    device.eye_on(50,255,255)
     if device.get_touch() == 'touch':
       await handle_touch_event()
       await asyncio.sleep(1)
