@@ -1,8 +1,6 @@
-<!DOCTYPE html>
-<html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>디지털새싹의 발자취</title>
     <link rel="shortcut icon" href="../static/logo.png" type="image/x-icon" />
     <script src="../static/socket.io.min.js?ver=240110v1"></script>
@@ -11,105 +9,88 @@
             font-family: 'Arial', sans-serif;
             background-color: #ffffff;
             margin: 0;
-            padding: 0;
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
             color: #333;
-            overflow: hidden; /* 스크롤 바를 숨깁니다 */
         }
 
         .content {
             text-align: center;
-            width: 100vw;
-            height: 100vh; /* 화면 전체 높이를 사용합니다 */
-            box-sizing: border-box;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: space-between; /* 요소 간의 공간을 균등하게 분배 */
-            padding: 10px;
+            max-width: 600px;
+            width: 100%;
+            padding: 30px;
         }
 
         .image-container {
             display: flex;
             justify-content: center;
-            gap: 10px;
-            flex-wrap: nowrap;
+            gap: 15px;
+            margin-bottom: 20px;
         }
 
         .image-container img {
-            max-width: 45%; /* 이미지의 최대 너비를 45%로 설정 */
+            width: 150px;
             height: auto;
             transition: transform 0.3s ease, filter 0.3s ease;
             border-radius: 8px;
         }
 
+        .image-container img:hover {
+            transform: scale(1.08);
+            filter: brightness(1.1);
+        }
+
         .main-title {
-            font-size: 2.5vh; /* 화면 높이에 비례한 폰트 크기 */
+            font-size: 28px;
             font-weight: bold;
             color: #2c3e50;
-            margin: 0;
+            margin-bottom: 10px;
         }
 
         .main-title .highlight {
-            font-size: 1em;
+            font-size: 1.1em;
             color: #ffbf00;
         }
 
         .instruction-text {
-            font-size: 2vh;
+            font-size: 14px;
             color: #777;
-            margin: 0;
+            margin-bottom: 20px;
         }
 
         .controls {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 1vh;
+            gap: 20px;
         }
 
         .volume-container {
             display: flex;
             align-items: center;
-            gap: 1vh;
+            gap: 15px;
         }
 
         #volume-slider {
-            width: 30vw; /* 화면 너비의 30% */
-            max-width: 300px;
+            width: 200px;
             accent-color: #3498db;
         }
 
         #volume-display {
-            font-size: 2vh;
+            font-size: 18px;
             color: #2c3e50;
             font-weight: bold;
         }
 
-        .start-btn {
-            background-color: #4CAF50;
+        button {
+            background-color: #3498db;
             color: white;
-            padding: 1.5vh 3vh;
-            font-size: 3vh;
-            font-weight: bold;
-            border: none;
-            border-radius: 12px;
-            cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.2s ease;
-        }
-
-        .start-btn:active {
-            transform: translateY(3px);
-        }
-
-        .start-btn:hover {
-            background-color: #45a049;
-        }
-
-        .fullscreen-btn {
-            background-color: #b0b0b0;
-            color: white;
-            padding: 1vh 2vh;
-            font-size: 1.8vh;
+            padding: 15px 30px;
+            font-size: 18px;
             font-weight: bold;
             border: none;
             border-radius: 8px;
@@ -117,57 +98,38 @@
             transition: background-color 0.3s ease, transform 0.2s ease;
         }
 
-        .fullscreen-btn:active {
-            transform: translateY(2px);
+        button:active {
+            transform: translateY(3px);
         }
 
-        .fullscreen-btn:hover {
-            background-color: #9a9a9a;
+        button:hover {
+            background-color: #2980b9;
         }
 
-        /* 화면 크기에 따른 반응형 조정 */
-        @media (max-height: 600px) {
-            .main-title, .instruction-text, .start-btn, .fullscreen-btn, #volume-display {
-                font-size: 1.5vh;
-            }
-
-            .start-btn {
-                padding: 1vh 2vh;
-            }
-
-            .fullscreen-btn {
-                padding: 0.5vh 1vh;
-            }
-
-            #volume-slider {
-                width: 25vw;
-            }
+        .fullscreen-btn {
+            background-color: #b0b0b0;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 16px;
         }
 
         @media (max-width: 768px) {
-            .image-container {
-                flex-direction: column;
-                align-items: center;
+            .main-title {
+                font-size: 24px;
             }
 
-            .image-container img {
-                max-width: 80%; /* 작은 화면에서는 이미지가 너무 작아지지 않도록 조정 */
-            }
-
-            .main-title, .instruction-text, .start-btn, .fullscreen-btn, #volume-display {
-                font-size: 2vh;
-            }
-
-            .start-btn {
-                padding: 1.5vh 3vh;
+            button {
+                font-size: 16px;
+                padding: 12px 20px;
             }
 
             .fullscreen-btn {
-                padding: 1vh 2vh;
+                font-size: 14px;
+                padding: 8px 16px;
             }
 
-            #volume-slider {
-                width: 50vw;
+            .image-container img {
+                width: 120px;
             }
         }
     </style>
@@ -189,13 +151,12 @@
         </div>
 
         <div class="controls">
-            <button class="start-btn" onclick="playRobot()">START</button>
-
             <div class="volume-container">
                 <input type="range" id="volume-slider" min="0" max="100" value="100" oninput="updateVolumeDisplay(this.value)">
                 <span id="volume-display">100</span>
             </div>
 
+            <button onclick="playRobot()">Start</button>
             <button class="fullscreen-btn" onclick="toggleFullScreen()" id="fullscreen-btn">⛶ Fullscreen</button>
         </div>
     </div>
@@ -216,29 +177,29 @@
         let fullscreen = false;
 
         function toggleFullScreen() {
-            const elem = document.documentElement;
             if (!fullscreen) {
-                if (elem.requestFullscreen) {
-                    elem.requestFullscreen();
-                } else if (elem.webkitRequestFullscreen) { /* Safari */
-                    elem.webkitRequestFullscreen();
-                } else if (elem.msRequestFullscreen) { /* IE11 */
-                    elem.msRequestFullscreen();
+                if (document.documentElement.requestFullscreen) {
+                    document.documentElement.requestFullscreen();
+                } else if (document.documentElement.webkitRequestFullscreen) {
+                    document.documentElement.webkitRequestFullscreen();
+                } else if (document.documentElement.msRequestFullscreen) {
+                    document.documentElement.msRequestFullscreen();
                 }
                 fullscreen = true;
                 document.getElementById('fullscreen-btn').innerHTML = '❌ Exit Fullscreen';
+                document.body.style.overflow = 'hidden';
             } else {
                 if (document.exitFullscreen) {
                     document.exitFullscreen();
-                } else if (document.webkitExitFullscreen) { /* Safari */
+                } else if (document.webkitExitFullscreen) {
                     document.webkitExitFullscreen();
-                } else if (document.msExitFullscreen) { /* IE11 */
+                } else if (document.msExitFullscreen) {
                     document.msExitFullscreen();
                 }
                 fullscreen = false;
                 document.getElementById('fullscreen-btn').innerHTML = '⛶ Fullscreen';
+                document.body.style.overflow = 'auto';
             }
         }
     </script>
 </body>
-</html>
