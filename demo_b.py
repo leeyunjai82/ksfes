@@ -11,10 +11,6 @@ from openpibo.motion import Motion
 from openpibo.audio import Audio
 from openpibo.speech import Speech
 
-audio = Audio()
-motion = Motion()
-device = Device()
-speech = Speech()
 # speech.SAPI_HOST = 'https://oe-sapi.circul.us/v1'
 VOLUME = 100
 PLAY = False
@@ -82,7 +78,15 @@ async def handle_touch_event():
   await asyncio.sleep(3)
   motion.set_motors([0,0,-70,-25,0,0,0,0,70,25], 2000)
   PLAY = False
-    
+
+@app.on_event('startup')
+async def f():
+  global audio, motion, device, speech
+  audio = Audio()
+  motion = Motion()
+  device = Device()
+  speech = Speech()
+
 if __name__ == "__main__":
   import uvicorn
   uvicorn.run('demo_b:app', host='0.0.0.0', port=10001, access_log=False)
