@@ -7,23 +7,19 @@
     <link rel="shortcut icon" href="../static/logo.png" type="image/x-icon" />
     <script src="../static/socket.io.min.js?ver=240110v1"></script>
     <style>
-        html, body {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            overflow: hidden; /* 스크롤 방지 */
-        }
-
         body {
             font-family: 'Arial', sans-serif;
             background-color: #ffffff;
+            margin: 0;
+            padding: 0;
             color: #333;
+            /* overflow: hidden; */ /* 스크롤을 허용하여 요소가 화면에 맞게 조정되도록 함 */
         }
 
         .content {
             text-align: center;
-            width: 100%;
-            height: 100%;
+            width: 100vw;
+            min-height: 100vh;
             box-sizing: border-box;
             display: flex;
             flex-direction: column;
@@ -53,19 +49,19 @@
         }
 
         .main-title {
-            font-size: 2.5vw; /* 반응형 폰트 크기 */
+            font-size: 2.5em;
             font-weight: bold;
             color: #2c3e50;
             margin-bottom: 20px;
         }
 
         .main-title .highlight {
-            font-size: 1em;
+            font-size: 1.2em;
             color: #ffbf00;
         }
 
         .instruction-text {
-            font-size: 1.5vw; /* 반응형 폰트 크기 */
+            font-size: 1.1em;
             color: #777;
             margin-bottom: 30px;
         }
@@ -75,6 +71,8 @@
             flex-direction: column;
             align-items: center;
             gap: 20px;
+            position: relative;
+            z-index: 1;
         }
 
         .volume-container {
@@ -84,27 +82,27 @@
         }
 
         #volume-slider {
-            width: 30vw;
-            max-width: 300px;
+            width: 300px;
             accent-color: #3498db;
         }
 
         #volume-display {
-            font-size: 2vw;
+            font-size: 1.5em;
             color: #2c3e50;
             font-weight: bold;
         }
 
         .start-btn {
-            background-color: #4CAF50;
+            background-color: #4CAF50; /* 요청하신 색상으로 변경 */
             color: white;
-            padding: 2vw 4vw;
-            font-size: 3vw;
+            padding: 20px 40px;
+            font-size: 2em;
             font-weight: bold;
             border: none;
             border-radius: 12px;
             cursor: pointer;
             transition: background-color 0.3s ease, transform 0.2s ease;
+            z-index: 2;
         }
 
         .start-btn:active {
@@ -118,13 +116,14 @@
         .fullscreen-btn {
             background-color: #b0b0b0;
             color: white;
-            padding: 1vw 2vw;
-            font-size: 1.5vw;
+            padding: 10px 20px;
+            font-size: 1em;
             font-weight: bold;
             border: none;
             border-radius: 8px;
             cursor: pointer;
             transition: background-color 0.3s ease, transform 0.2s ease;
+            z-index: 2;
         }
 
         .fullscreen-btn:active {
@@ -137,21 +136,21 @@
 
         @media (max-width: 768px) {
             .main-title {
-                font-size: 24px;
+                font-size: 2em;
             }
 
             .instruction-text {
-                font-size: 16px;
+                font-size: 1em;
             }
 
             .start-btn {
-                font-size: 24px;
-                padding: 20px 40px;
+                font-size: 1.5em;
+                padding: 15px 30px;
             }
 
             .fullscreen-btn {
-                font-size: 14px;
-                padding: 10px 20px;
+                font-size: 0.9em;
+                padding: 8px 16px;
             }
 
             .volume-container {
@@ -159,7 +158,7 @@
             }
 
             #volume-slider {
-                width: 80vw;
+                width: 250px;
             }
 
             .image-container img {
@@ -167,6 +166,16 @@
             }
         }
 
+        @media (max-height: 600px) {
+            .content {
+                justify-content: flex-start;
+                padding-top: 20px;
+            }
+
+            .controls {
+                margin-top: 20px;
+            }
+        }
     </style>
 </head>
 
