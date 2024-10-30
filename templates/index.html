@@ -45,7 +45,7 @@
         }
 
         .main-title {
-            font-size: 28px;
+            font-size: 36px; /* 폰트 크기 증가 */
             font-weight: bold;
             color: #2c3e50;
             margin-bottom: 10px;
@@ -57,7 +57,7 @@
         }
 
         .instruction-text {
-            font-size: 14px;
+            font-size: 18px; /* 폰트 크기 증가 */
             color: #777;
             margin-bottom: 20px;
         }
@@ -71,26 +71,28 @@
 
         .volume-container {
             display: flex;
+            flex-direction: column;
             align-items: center;
-            gap: 15px;
+            gap: 5px;
         }
 
         #volume-slider {
-            width: 200px;
-            accent-color: #3498db;
+            width: 300px; /* 슬라이더 너비 증가 */
+            accent-color: #4CAF50; /* 색상 변경 */
         }
 
         #volume-display {
-            font-size: 18px;
+            font-size: 24px; /* 폰트 크기 증가 */
             color: #2c3e50;
             font-weight: bold;
         }
 
         button {
-            background-color: #3498db;
+            background-color: #4CAF50; /* 색상 변경 */
             color: white;
-            padding: 15px 30px;
-            font-size: 18px;
+            padding: 15px 0;
+            width: 300px; /* 버튼 너비 설정 */
+            font-size: 24px; /* 폰트 크기 증가 */
             font-weight: bold;
             border: none;
             border-radius: 8px;
@@ -103,33 +105,40 @@
         }
 
         button:hover {
-            background-color: #2980b9;
+            background-color: #388E3C;
         }
 
         .fullscreen-btn {
             background-color: #b0b0b0;
-            padding: 10px 20px;
+            padding: 10px 0;
+            width: 300px; /* 버튼 너비 설정 */
             border-radius: 8px;
-            font-size: 16px;
+            font-size: 20px; /* 폰트 크기 증가 */
         }
 
         @media (max-width: 768px) {
             .main-title {
-                font-size: 24px;
+                font-size: 32px;
             }
 
             button {
-                font-size: 16px;
-                padding: 12px 20px;
+                font-size: 20px;
+                padding: 12px 0;
+                width: 250px;
             }
 
             .fullscreen-btn {
-                font-size: 14px;
-                padding: 8px 16px;
+                font-size: 18px;
+                padding: 8px 0;
+                width: 250px;
             }
 
             .image-container img {
                 width: 120px;
+            }
+
+            #volume-slider {
+                width: 250px;
             }
         }
     </style>
@@ -156,8 +165,8 @@
                 <span id="volume-display">100</span>
             </div>
 
-            <button onclick="playRobot()">Start</button>
-            <button class="fullscreen-btn" onclick="toggleFullScreen()" id="fullscreen-btn">⛶ Fullscreen</button>
+            <button onclick="playRobot()">시작</button>
+            <button class="fullscreen-btn" onclick="toggleFullScreen()" id="fullscreen-btn">전체화면</button>
         </div>
     </div>
 
@@ -186,7 +195,7 @@
                     document.documentElement.msRequestFullscreen();
                 }
                 fullscreen = true;
-                document.getElementById('fullscreen-btn').innerHTML = '❌ Exit Fullscreen';
+                document.getElementById('fullscreen-btn').innerHTML = '전체화면 종료';
                 document.body.style.overflow = 'hidden';
             } else {
                 if (document.exitFullscreen) {
@@ -197,7 +206,7 @@
                     document.msExitFullscreen();
                 }
                 fullscreen = false;
-                document.getElementById('fullscreen-btn').innerHTML = '⛶ Fullscreen';
+                document.getElementById('fullscreen-btn').innerHTML = '전체화면';
                 document.body.style.overflow = 'auto';
             }
         }
