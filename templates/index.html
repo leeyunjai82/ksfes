@@ -20,7 +20,7 @@
 
         .content {
             text-align: center;
-            max-width: 600px;
+            max-width: 800px;
             width: 100%;
             padding: 30px;
         }
@@ -28,12 +28,12 @@
         .image-container {
             display: flex;
             justify-content: center;
-            gap: 15px;
-            margin-bottom: 20px;
+            gap: 20px;
+            margin-bottom: 30px;
         }
 
         .image-container img {
-            width: 200px;
+            width: 250px; /* 이미지 크기 증가 */
             height: auto;
             transition: transform 0.3s ease, filter 0.3s ease;
             border-radius: 8px;
@@ -45,11 +45,11 @@
         }
 
         .main-title {
-            font-size: 36px;
+            font-size: 48px; /* 폰트 크기 증가 */
             font-weight: bold;
             color: #2c3e50;
-            margin-bottom: 20px;
-            white-space: nowrap;
+            margin-bottom: 25px;
+            white-space: nowrap; /* 줄바꿈 방지 */
         }
 
         .main-title .highlight {
@@ -58,9 +58,9 @@
         }
 
         .instruction-text {
-            font-size: 18px;
+            font-size: 14px; /* 폰트 크기 감소 */
             color: #777;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
         }
 
         .controls {
@@ -72,11 +72,11 @@
 
         /* 시작 버튼 스타일 */
         .start-btn {
-            background-color: #4CAF50;
+            background-color: #b0b0b0; /* 회색으로 변경 */
             color: white;
-            padding: 20px 0;
-            width: 320px;
-            font-size: 28px;
+            padding: 25px 0; /* 패딩 증가 */
+            width: 350px; /* 너비 증가 */
+            font-size: 32px; /* 폰트 크기 증가 */
             font-weight: bold;
             border: none;
             border-radius: 8px;
@@ -86,7 +86,7 @@
         }
 
         .start-btn:hover {
-            background-color: #388E3C;
+            background-color: #9e9e9e; /* 호버 시 조금 더 진한 회색 */
         }
 
         .start-btn:active {
@@ -103,23 +103,23 @@
         }
 
         #volume-slider {
-            width: 280px;
-            accent-color: #3498db; /* 색상 변경 */
+            width: 250px; /* 너비 감소 */
+            accent-color: #3498db;
         }
 
         #volume-display {
-            font-size: 18px;
+            font-size: 16px; /* 폰트 크기 감소 */
             color: #2c3e50;
             font-weight: bold;
         }
 
         /* 전체화면 버튼 스타일 */
         .fullscreen-btn {
-            background-color: #4CAF50;
+            background-color: #b0b0b0; /* 회색으로 변경 */
             color: white;
-            padding: 15px 0;
-            width: 280px;
-            font-size: 22px;
+            padding: 10px 0; /* 패딩 감소 */
+            width: 250px; /* 너비 감소 */
+            font-size: 18px; /* 폰트 크기 감소 */
             font-weight: bold;
             border: none;
             border-radius: 8px;
@@ -130,7 +130,7 @@
         }
 
         .fullscreen-btn:hover {
-            background-color: #388E3C;
+            background-color: #9e9e9e; /* 호버 시 조금 더 진한 회색 */
         }
 
         .fullscreen-btn:active {
@@ -139,13 +139,13 @@
 
         @media (max-width: 768px) {
             .main-title {
-                font-size: 32px;
+                font-size: 40px; /* 작은 화면에서 폰트 크기 조정 */
             }
 
             .start-btn {
-                font-size: 24px;
-                padding: 16px 0;
-                width: 280px;
+                font-size: 28px;
+                padding: 20px 0;
+                width: 300px;
             }
 
             .volume-container {
@@ -153,17 +153,17 @@
             }
 
             #volume-slider {
-                width: 240px;
+                width: 200px;
             }
 
             .fullscreen-btn {
-                font-size: 18px;
-                padding: 12px 0;
-                width: 240px;
+                font-size: 16px;
+                padding: 8px 0;
+                width: 200px;
             }
 
             .image-container img {
-                width: 150px;
+                width: 200px; /* 작은 화면에서 이미지 크기 조정 */
             }
         }
     </style>
