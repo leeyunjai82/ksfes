@@ -24,20 +24,6 @@ app.mount("/static", StaticFiles(directory="static"), name="static")
 async def f(request: Request):
   return templates.TemplateResponse("index.html", {"request": request})
 
-@app.get('/volume/{num}')
-async def f(num=100):
-  global VOLUME
-  try:
-    res = ''
-    if isinstance(num, (int, float)) and 0 <= num <= 100:
-      VOLUME = num
-    else:
-      raise ValueError("입력값이 0에서 100 사이여야 합니다.")
-  except (TypeError, ValueError) as e:
-    res = e
-    VOLUME = 100  # 에러 발생 시 VOLUME을 100으로 설정
-  return {'volume':VOLUME, 'error': res}
-
 @app.on_event('startup')
 async def startup_event():
   print('startup')
