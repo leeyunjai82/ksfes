@@ -36,7 +36,7 @@ async def f(num=100):
   except (TypeError, ValueError) as e:
     res = e
     VOLUME = 100  # 에러 발생 시 VOLUME을 100으로 설정
-  return JSONResponse(content={'volume':VOLUME, 'error': res}, status_code=200)
+  return {'volume':VOLUME, 'error': res}
 
 @app.on_event('startup')
 async def startup_event():
