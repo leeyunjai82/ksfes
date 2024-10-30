@@ -13,26 +13,25 @@
             margin: 0;
             padding: 0;
             color: #333;
-            /* overflow: hidden; */ /* 스크롤을 허용하여 요소가 화면에 맞게 조정되도록 함 */
+            overflow: hidden;
         }
 
         .content {
             text-align: center;
             width: 100vw;
-            min-height: 100vh;
+            height: 100vh;
             box-sizing: border-box;
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            justify-content: space-around; /* 요소들을 화면에 고르게 배치 */
             align-items: center;
-            padding: 20px;
+            padding: 10px;
         }
 
         .image-container {
             display: flex;
             justify-content: center;
             gap: 10px;
-            margin-bottom: 20px;
             flex-wrap: wrap;
         }
 
@@ -43,34 +42,29 @@
             border-radius: 8px;
         }
 
-        .image-container img:hover {
-            transform: scale(1.05);
-            filter: brightness(1.05);
-        }
-
         .main-title {
-            font-size: 2.5em;
+            font-size: 2.2vh; /* 화면 높이에 비례하여 폰트 크기 설정 */
             font-weight: bold;
             color: #2c3e50;
-            margin-bottom: 20px;
+            margin: 0;
         }
 
         .main-title .highlight {
-            font-size: 1.2em;
+            font-size: 1em;
             color: #ffbf00;
         }
 
         .instruction-text {
-            font-size: 1.1em;
+            font-size: 1.8vh;
             color: #777;
-            margin-bottom: 30px;
+            margin: 0;
         }
 
         .controls {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 20px;
+            gap: 1vh;
             position: relative;
             z-index: 1;
         }
@@ -78,25 +72,26 @@
         .volume-container {
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 1vh;
         }
 
         #volume-slider {
-            width: 300px;
+            width: 20vw;
+            max-width: 300px;
             accent-color: #3498db;
         }
 
         #volume-display {
-            font-size: 1.5em;
+            font-size: 2vh;
             color: #2c3e50;
             font-weight: bold;
         }
 
         .start-btn {
-            background-color: #4CAF50; /* 요청하신 색상으로 변경 */
+            background-color: #4CAF50;
             color: white;
-            padding: 20px 40px;
-            font-size: 2em;
+            padding: 1.5vh 3vh;
+            font-size: 3vh;
             font-weight: bold;
             border: none;
             border-radius: 12px;
@@ -116,8 +111,8 @@
         .fullscreen-btn {
             background-color: #b0b0b0;
             color: white;
-            padding: 10px 20px;
-            font-size: 1em;
+            padding: 1vh 2vh;
+            font-size: 1.8vh;
             font-weight: bold;
             border: none;
             border-radius: 8px;
@@ -134,46 +129,58 @@
             background-color: #9a9a9a;
         }
 
-        @media (max-width: 768px) {
-            .main-title {
-                font-size: 2em;
+        @media (orientation: landscape) {
+            .content {
+                flex-direction: row;
+                flex-wrap: wrap;
+                align-items: center;
+                justify-content: space-around;
             }
 
-            .instruction-text {
-                font-size: 1em;
+            .image-container {
+                order: 1;
+                width: 100%;
+                justify-content: center;
             }
 
-            .start-btn {
-                font-size: 1.5em;
-                padding: 15px 30px;
-            }
-
-            .fullscreen-btn {
-                font-size: 0.9em;
-                padding: 8px 16px;
-            }
-
-            .volume-container {
-                flex-direction: column;
-            }
-
-            #volume-slider {
-                width: 250px;
-            }
-
-            .image-container img {
-                max-width: 80%;
+            .main-title, .instruction-text, .controls {
+                order: 2;
             }
         }
 
-        @media (max-height: 600px) {
-            .content {
-                justify-content: flex-start;
-                padding-top: 20px;
+        @media (max-height: 500px) {
+            .start-btn {
+                font-size: 2.5vh;
+                padding: 1vh 2vh;
             }
 
-            .controls {
-                margin-top: 20px;
+            .fullscreen-btn {
+                font-size: 1.5vh;
+                padding: 0.5vh 1vh;
+            }
+
+            #volume-slider {
+                width: 15vw;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .image-container img {
+                max-width: 80%;
+            }
+
+            .start-btn {
+                font-size: 2.5vh;
+                padding: 1vh 2vh;
+            }
+
+            .fullscreen-btn {
+                font-size: 1.5vh;
+                padding: 0.5vh 1vh;
+            }
+
+            #volume-slider {
+                width: 50vw;
             }
         }
     </style>
@@ -226,9 +233,9 @@
             if (!fullscreen) {
                 if (elem.requestFullscreen) {
                     elem.requestFullscreen();
-                } else if (elem.webkitRequestFullscreen) { /* Safari */
+                } else if (elem.webkitRequestFullscreen) {
                     elem.webkitRequestFullscreen();
-                } else if (elem.msRequestFullscreen) { /* IE11 */
+                } else if (elem.msRequestFullscreen) {
                     elem.msRequestFullscreen();
                 }
                 fullscreen = true;
@@ -236,9 +243,9 @@
             } else {
                 if (document.exitFullscreen) {
                     document.exitFullscreen();
-                } else if (document.webkitExitFullscreen) { /* Safari */
+                } else if (document.webkitExitFullscreen) {
                     document.webkitExitFullscreen();
-                } else if (document.msExitFullscreen) { /* IE11 */
+                } else if (document.msExitFullscreen) {
                     document.msExitFullscreen();
                 }
                 fullscreen = false;
