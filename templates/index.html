@@ -7,19 +7,23 @@
     <link rel="shortcut icon" href="../static/logo.png" type="image/x-icon" />
     <script src="../static/socket.io.min.js?ver=240110v1"></script>
     <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden; /* 스크롤 방지 */
+        }
+
         body {
             font-family: 'Arial', sans-serif;
             background-color: #ffffff;
-            margin: 0;
-            padding: 0;
             color: #333;
-            /* overflow: hidden; */ /* 스크롤을 허용하여 터치 가능하도록 수정 */
         }
 
         .content {
             text-align: center;
-            width: 100vw;
-            min-height: 100vh;
+            width: 100%;
+            height: 100%;
             box-sizing: border-box;
             display: flex;
             flex-direction: column;
@@ -49,19 +53,19 @@
         }
 
         .main-title {
-            font-size: 36px;
+            font-size: 2.5vw; /* 반응형 폰트 크기 */
             font-weight: bold;
             color: #2c3e50;
             margin-bottom: 20px;
         }
 
         .main-title .highlight {
-            font-size: 1.2em;
+            font-size: 1em;
             color: #ffbf00;
         }
 
         .instruction-text {
-            font-size: 18px;
+            font-size: 1.5vw; /* 반응형 폰트 크기 */
             color: #777;
             margin-bottom: 30px;
         }
@@ -71,8 +75,6 @@
             flex-direction: column;
             align-items: center;
             gap: 20px;
-            position: relative;
-            z-index: 1; /* 컨트롤 영역을 상위에 배치 */
         }
 
         .volume-container {
@@ -82,27 +84,27 @@
         }
 
         #volume-slider {
-            width: 300px;
+            width: 30vw;
+            max-width: 300px;
             accent-color: #3498db;
         }
 
         #volume-display {
-            font-size: 24px;
+            font-size: 2vw;
             color: #2c3e50;
             font-weight: bold;
         }
 
         .start-btn {
-            background-color: #e74c3c;
+            background-color: #4CAF50;
             color: white;
-            padding: 30px 60px;
-            font-size: 36px;
+            padding: 2vw 4vw;
+            font-size: 3vw;
             font-weight: bold;
             border: none;
             border-radius: 12px;
             cursor: pointer;
             transition: background-color 0.3s ease, transform 0.2s ease;
-            z-index: 2; /* 버튼을 상위에 배치 */
         }
 
         .start-btn:active {
@@ -110,20 +112,19 @@
         }
 
         .start-btn:hover {
-            background-color: #c0392b;
+            background-color: #45a049;
         }
 
         .fullscreen-btn {
             background-color: #b0b0b0;
             color: white;
-            padding: 10px 20px;
-            font-size: 16px;
+            padding: 1vw 2vw;
+            font-size: 1.5vw;
             font-weight: bold;
             border: none;
             border-radius: 8px;
             cursor: pointer;
             transition: background-color 0.3s ease, transform 0.2s ease;
-            z-index: 2; /* 버튼을 상위에 배치 */
         }
 
         .fullscreen-btn:active {
@@ -134,9 +135,9 @@
             background-color: #9a9a9a;
         }
 
-        @media (max-width: 1024px) {
+        @media (max-width: 768px) {
             .main-title {
-                font-size: 32px;
+                font-size: 24px;
             }
 
             .instruction-text {
@@ -144,13 +145,13 @@
             }
 
             .start-btn {
-                font-size: 32px;
-                padding: 25px 50px;
+                font-size: 24px;
+                padding: 20px 40px;
             }
 
             .fullscreen-btn {
                 font-size: 14px;
-                padding: 8px 16px;
+                padding: 10px 20px;
             }
 
             .volume-container {
@@ -158,13 +159,14 @@
             }
 
             #volume-slider {
-                width: 250px;
+                width: 80vw;
             }
 
             .image-container img {
                 max-width: 80%;
             }
         }
+
     </style>
 </head>
 
@@ -222,7 +224,6 @@
                 }
                 fullscreen = true;
                 document.getElementById('fullscreen-btn').innerHTML = '❌ Exit Fullscreen';
-                // document.body.style.overflow = 'hidden'; // 터치 이슈 방지를 위해 주석 처리
             } else {
                 if (document.exitFullscreen) {
                     document.exitFullscreen();
@@ -233,7 +234,6 @@
                 }
                 fullscreen = false;
                 document.getElementById('fullscreen-btn').innerHTML = '⛶ Fullscreen';
-                // document.body.style.overflow = 'auto'; // 터치 이슈 방지를 위해 주석 처리
             }
         }
     </script>
