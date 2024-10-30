@@ -7,165 +7,157 @@
     <style>
         body {
             font-family: 'Arial', sans-serif;
-            background-color: #ffffff;
+            background-color: #f5f5f5;
             margin: 0;
             height: 100vh;
             width: 100vw;
             display: flex;
             flex-direction: column;
-            justify-content: center;
             align-items: center;
-            padding: 10px;
-            overflow: hidden; /* 스크롤 방지 */
+            justify-content: center;
+            padding: 20px;
+            color: #333;
         }
 
-        /* 콘텐츠 중앙 정렬 */
         .content {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
             text-align: center;
+            max-width: 800px;
+            width: 100%;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
 
-        /* 이미지 중앙 배치 */
         .image-container {
             display: flex;
             justify-content: center;
             align-items: center;
-            width: 100%;
-            max-width: 1200px;
-            margin-bottom: 10px; /* 이미지와 버튼 사이에 여백 */
-            gap: 20px; /* 이미지 간 여백 추가 */
+            margin-bottom: 20px;
+            gap: 15px;
         }
 
         .image-container img {
-            width: 300px;
+            width: 200px;
             height: auto;
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, filter 0.3s ease;
+            border-radius: 10px;
         }
 
         .image-container img:hover {
-            transform: scale(1.05); /* 이미지에 호버 시 확대 효과 */
+            transform: scale(1.08);
+            filter: brightness(1.1);
         }
 
-        /* 버튼 스타일 */
+        .main-title {
+            font-size: 36px;
+            font-weight: bold;
+            color: #2c3e50;
+            margin: 10px 0;
+        }
+
+        .main-title .highlight {
+            font-size: 1.1em;
+            color: #ffbf00;
+        }
+
+        .instruction-text {
+            font-size: 16px;
+            color: #777;
+            margin-top: 15px;
+        }
+
         .button-container {
-            margin-top: 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            margin-top: 25px;
         }
 
         button {
-            background-color: #4CAF50;
+            background-color: #3498db;
             color: white;
-            padding: 20px 50px;
-            font-size: 50px;
+            padding: 15px 40px;
+            font-size: 22px;
+            font-weight: bold;
             border: none;
-            border-radius: 30px;
+            border-radius: 8px;
             cursor: pointer;
-            box-shadow: 0 8px #2e7d32;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
         }
 
         button:active {
-            box-shadow: none;
-            transform: translateY(5px);
+            transform: translateY(4px);
         }
 
         button:hover {
-            background-color: #45a049;
+            background-color: #2980b9;
         }
 
-        /* 제목 스타일 */
-        .main-title {
-            font-size: 40px;
-            color: #333;
-            font-weight: bold;
-            margin-bottom: 15px;
-        }
-
-        /* ⭐ 텍스트 강조를 위한 스타일 */
-        .main-title .highlight {
-            font-size: 1.2em;
-            color: #ffbf00; /* 노란색으로 강조 */
-        }
-
-        /* 전체화면 버튼 스타일 */
         .fullscreen-btn {
-            background-color: #888;
-            color: white;
+            background-color: #95a5a6;
+            font-size: 18px;
+            padding: 10px 25px;
+            border-radius: 8px;
+            color: #fff;
+            margin-top: 20px;
+        }
+
+        #volume-input {
+            font-size: 18px;
             padding: 10px;
-            font-size: 18px;
-            border: none;
-            border-radius: 10px;
-            cursor: pointer;
-            margin-top: 15px;
+            width: 100px;
+            text-align: center;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-top: 10px;
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
-        /* 설명 텍스트 스타일 */
-        .instruction-text {
-            font-size: 18px;
-            color: #555;
-            margin-top: 15px;
-        }
-
-        /* 작은 화면용 미디어 쿼리 */
         @media (max-width: 768px) {
-            body {
-                padding: 5px;
-            }
-
             .main-title {
-                font-size: 35px;
+                font-size: 30px;
             }
 
             button {
-                font-size: 50px;
-                padding: 20px 40px;
+                font-size: 18px;
+                padding: 10px 30px;
             }
 
             .fullscreen-btn {
                 font-size: 16px;
-                padding: 8px;
+                padding: 8px 20px;
             }
 
             .image-container img {
                 width: 150px;
             }
-
-            .image-container {
-                gap: 15px;
-            }
         }
     </style>
 </head>
+
 <body>
-
-    <div class="image-container">
-        <img src="../static/bg1.png" alt="Robot Image">
-        <img src="../static/bg2.png" alt="Character Image">
-    </div>
-
     <div class="content">
+        <div class="image-container">
+            <img src="../static/bg1.png" alt="Robot Image">
+            <img src="../static/bg2.png" alt="Character Image">
+        </div>
+
         <h1 class="main-title">
             <span class="highlight">⭐ [B]</span> Impact Journey: 디지털새싹의 발자취
         </h1>
-        
-        <div class="button-container">
-          <button onclick="playRobot()">
-            Start
-          </button>
-        </div>
-        <br><br>
+
         <div class="instruction-text">
             * 동작하지 않을 때는 파이보의 머리를 터치해주세요~
         </div>
 
-        <button class="fullscreen-btn" onclick="toggleFullScreen()" id="fullscreen-btn">⛶ Fullscreen</button>
-        <input type="number" id="volume-input" min="0" max="100" placeholder="100" style="font-size: 20px; padding: 5px; width: 150px; text-align: center;">
+        <input type="number" id="volume-input" min="0" max="100" placeholder="Volume (0-100)" />
+        
+        <div class="button-container">
+            <button onclick="playRobot()">Start</button>
+            <button class="fullscreen-btn" onclick="toggleFullScreen()" id="fullscreen-btn">⛶ Fullscreen</button>
+        </div>
     </div>
 
     <script>
@@ -173,7 +165,13 @@
         console.log('Connected to server at', location.hostname);
 
         function playRobot() {
-            socket.emit('play');
+            const volumeInput = document.getElementById("volume-input").value;
+            const volume = parseInt(volumeInput);
+            if (isNaN(volume) || volume < 0 || volume > 100) {
+                alert("Please enter a valid volume between 0 and 100.");
+                return;
+            }
+            socket.emit('play', { volume });
         }
 
         let fullscreen = false;
@@ -182,27 +180,26 @@
             if (!fullscreen) {
                 if (document.documentElement.requestFullscreen) {
                     document.documentElement.requestFullscreen();
-                } else if (document.documentElement.webkitRequestFullscreen) { // Safari support
+                } else if (document.documentElement.webkitRequestFullscreen) {
                     document.documentElement.webkitRequestFullscreen();
-                } else if (document.documentElement.msRequestFullscreen) { // IE11 support
+                } else if (document.documentElement.msRequestFullscreen) {
                     document.documentElement.msRequestFullscreen();
                 }
                 fullscreen = true;
                 document.getElementById('fullscreen-btn').innerHTML = '❌ Exit Fullscreen';
-                document.body.style.overflow = 'hidden'; // 전체 화면에서는 스크롤 방지
+                document.body.style.overflow = 'hidden';
             } else {
                 if (document.exitFullscreen) {
                     document.exitFullscreen();
-                } else if (document.webkitExitFullscreen) { // Safari support
+                } else if (document.webkitExitFullscreen) {
                     document.webkitExitFullscreen();
-                } else if (document.msExitFullscreen) { // IE11 support
+                } else if (document.msExitFullscreen) {
                     document.msExitFullscreen();
                 }
                 fullscreen = false;
                 document.getElementById('fullscreen-btn').innerHTML = '⛶ Fullscreen';
-                document.body.style.overflow = 'auto'; // 전체 화면 해제 시 스크롤 가능
+                document.body.style.overflow = 'auto';
             }
         }
     </script>
-
 </body>
