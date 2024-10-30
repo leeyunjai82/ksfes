@@ -14,13 +14,13 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center; /* 기본적으로 가운데 정렬 */
+            justify-content: center; /* 수직 중앙 정렬 */
             color: #333;
         }
 
-        /* 전체화면 모드에서 컨텐츠를 위로 배치 */
+        /* 전체화면 모드에서 컨텐츠를 화면에 맞게 조정 */
         body.fullscreen-mode {
-            justify-content: flex-start;
+            justify-content: center; /* 수직 중앙 정렬 유지 */
         }
 
         .content {
@@ -28,10 +28,11 @@
             max-width: 800px;
             width: 100%;
             padding: 30px;
-        }
-
-        body.fullscreen-mode .content {
-            padding-top: 20px; /* 전체화면 모드에서 상단 패딩 조정 */
+            flex-grow: 1; /* 가능한 공간을 모두 채움 */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center; /* 컨텐츠 내부 요소도 중앙 정렬 */
         }
 
         .image-container {
@@ -81,7 +82,7 @@
 
         /* 시작 버튼 스타일 */
         .start-btn {
-            background-color: #4CAF50; /* 녹색으로 변경 */
+            background-color: #4CAF50;
             color: white;
             padding: 25px 0;
             width: 350px;
@@ -124,7 +125,7 @@
 
         /* 전체화면 버튼 스타일 */
         .fullscreen-btn {
-            background-color: #b0b0b0; /* 회색으로 유지 */
+            background-color: #b0b0b0;
             color: white;
             padding: 10px 0;
             width: 250px;
@@ -236,7 +237,7 @@
                 fullscreen = true;
                 document.getElementById('fullscreen-btn').innerHTML = '❌ 전체화면 종료';
                 document.body.style.overflow = 'hidden';
-                document.body.classList.add('fullscreen-mode'); // 전체화면 모드 클래스 추가
+                document.body.classList.add('fullscreen-mode');
             } else {
                 if (document.exitFullscreen) {
                     document.exitFullscreen();
@@ -248,7 +249,7 @@
                 fullscreen = false;
                 document.getElementById('fullscreen-btn').innerHTML = '🔳 전체화면';
                 document.body.style.overflow = 'auto';
-                document.body.classList.remove('fullscreen-mode'); // 전체화면 모드 클래스 제거
+                document.body.classList.remove('fullscreen-mode');
             }
         }
     </script>
