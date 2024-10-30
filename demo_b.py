@@ -44,9 +44,21 @@ async def disconnect(sid):
   print(f"Client disconnected: {sid}")
 
 @app.sio.on('play')
-async def handle_input(sid):
-  await handle_touch_event()
-  
+async def handle_play(sid, data):
+    global VOLUME
+    volume = data.get('volume')
+    try:
+        if isinstance(volume, (int, float)) and 0 <= volume <= 100:
+            VOLUME = volume
+        else:
+            raise ValueError("입력값이 0에서 100 사이여야 합니다.")
+    except (TypeError, ValueError) as e:
+        print("에러:", e)
+        VOLUME = 100  # 모든 에러 발생 시 VOLUME을 100으로 설정
+
+    # 정상 처리 후 실행
+    await handle_touch_event()
+
 async def touch_sensor_monitor():
   motion.set_motion('stop')
   device.eye_on(50,255,255)
