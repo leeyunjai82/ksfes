@@ -23,7 +23,8 @@ def talk(string, filepath, actions):
   if actions != None:
     motion_timer = Timer(0, motion.set_motion, args=(random.choice(actions),))
     motion_timer.start()
-  audio.play(filepath, VOLUME, background=False)
+  #audio.play(filepath, VOLUME, background=False)
+  os.system(f'amixer -q -c Device sset Headphone 100%;play -q -V1 -v 1.0 "{filepath}"')
   device.eye_off()
   time.sleep(0.5)
 
