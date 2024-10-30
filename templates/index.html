@@ -32,12 +32,12 @@
             display: flex;
             justify-content: center;
             gap: 10px;
-            margin-bottom: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
         }
 
         .image-container img {
-            width: 45%;
-            max-width: 300px;
+            max-width: 45%;
             height: auto;
             transition: transform 0.3s ease, filter 0.3s ease;
             border-radius: 8px;
@@ -52,7 +52,7 @@
             font-size: 36px;
             font-weight: bold;
             color: #2c3e50;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
 
         .main-title .highlight {
@@ -63,14 +63,14 @@
         .instruction-text {
             font-size: 18px;
             color: #777;
-            margin-bottom: 25px;
+            margin-bottom: 30px;
         }
 
         .controls {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 25px;
+            gap: 20px;
         }
 
         .volume-container {
@@ -90,11 +90,31 @@
             font-weight: bold;
         }
 
-        button {
-            background-color: #3498db;
+        .start-btn {
+            background-color: #e74c3c;
             color: white;
-            padding: 20px 40px;
-            font-size: 24px;
+            padding: 30px 60px;
+            font-size: 36px;
+            font-weight: bold;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .start-btn:active {
+            transform: translateY(3px);
+        }
+
+        .start-btn:hover {
+            background-color: #c0392b;
+        }
+
+        .fullscreen-btn {
+            background-color: #b0b0b0;
+            color: white;
+            padding: 10px 20px;
+            font-size: 16px;
             font-weight: bold;
             border: none;
             border-radius: 8px;
@@ -102,19 +122,12 @@
             transition: background-color 0.3s ease, transform 0.2s ease;
         }
 
-        button:active {
-            transform: translateY(3px);
+        .fullscreen-btn:active {
+            transform: translateY(2px);
         }
 
-        button:hover {
-            background-color: #2980b9;
-        }
-
-        .fullscreen-btn {
-            background-color: #b0b0b0;
-            padding: 15px 30px;
-            border-radius: 8px;
-            font-size: 20px;
+        .fullscreen-btn:hover {
+            background-color: #9a9a9a;
         }
 
         @media (max-width: 1024px) {
@@ -122,18 +135,30 @@
                 font-size: 32px;
             }
 
-            button {
-                font-size: 22px;
-                padding: 18px 36px;
+            .instruction-text {
+                font-size: 16px;
+            }
+
+            .start-btn {
+                font-size: 32px;
+                padding: 25px 50px;
             }
 
             .fullscreen-btn {
-                font-size: 18px;
-                padding: 12px 24px;
+                font-size: 14px;
+                padding: 8px 16px;
+            }
+
+            .volume-container {
+                flex-direction: column;
+            }
+
+            #volume-slider {
+                width: 250px;
             }
 
             .image-container img {
-                width: 40%;
+                max-width: 80%;
             }
         }
     </style>
@@ -155,12 +180,13 @@
         </div>
 
         <div class="controls">
+            <button class="start-btn" onclick="playRobot()">START</button>
+
             <div class="volume-container">
                 <input type="range" id="volume-slider" min="0" max="100" value="100" oninput="updateVolumeDisplay(this.value)">
                 <span id="volume-display">100</span>
             </div>
 
-            <button onclick="playRobot()">Start</button>
             <button class="fullscreen-btn" onclick="toggleFullScreen()" id="fullscreen-btn">⛶ Fullscreen</button>
         </div>
     </div>
