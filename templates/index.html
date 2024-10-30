@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>디지털새싹의 발자취</title>
     <link rel="shortcut icon" href="../static/logo.png" type="image/x-icon" />
     <script src="../static/socket.io.min.js?ver=240110v1"></script>
@@ -13,18 +13,18 @@
             margin: 0;
             padding: 0;
             color: #333;
-            overflow: hidden;
+            overflow: hidden; /* 스크롤 바를 숨깁니다 */
         }
 
         .content {
             text-align: center;
             width: 100vw;
-            height: 100vh;
+            height: 100vh; /* 화면 전체 높이를 사용합니다 */
             box-sizing: border-box;
             display: flex;
             flex-direction: column;
-            justify-content: space-around; /* 요소들을 화면에 고르게 배치 */
             align-items: center;
+            justify-content: space-between; /* 요소 간의 공간을 균등하게 분배 */
             padding: 10px;
         }
 
@@ -32,18 +32,18 @@
             display: flex;
             justify-content: center;
             gap: 10px;
-            flex-wrap: wrap;
+            flex-wrap: nowrap;
         }
 
         .image-container img {
-            max-width: 45%;
+            max-width: 45%; /* 이미지의 최대 너비를 45%로 설정 */
             height: auto;
             transition: transform 0.3s ease, filter 0.3s ease;
             border-radius: 8px;
         }
 
         .main-title {
-            font-size: 2.2vh; /* 화면 높이에 비례하여 폰트 크기 설정 */
+            font-size: 2.5vh; /* 화면 높이에 비례한 폰트 크기 */
             font-weight: bold;
             color: #2c3e50;
             margin: 0;
@@ -55,7 +55,7 @@
         }
 
         .instruction-text {
-            font-size: 1.8vh;
+            font-size: 2vh;
             color: #777;
             margin: 0;
         }
@@ -65,8 +65,6 @@
             flex-direction: column;
             align-items: center;
             gap: 1vh;
-            position: relative;
-            z-index: 1;
         }
 
         .volume-container {
@@ -76,7 +74,7 @@
         }
 
         #volume-slider {
-            width: 20vw;
+            width: 30vw; /* 화면 너비의 30% */
             max-width: 300px;
             accent-color: #3498db;
         }
@@ -97,7 +95,6 @@
             border-radius: 12px;
             cursor: pointer;
             transition: background-color 0.3s ease, transform 0.2s ease;
-            z-index: 2;
         }
 
         .start-btn:active {
@@ -118,7 +115,6 @@
             border-radius: 8px;
             cursor: pointer;
             transition: background-color 0.3s ease, transform 0.2s ease;
-            z-index: 2;
         }
 
         .fullscreen-btn:active {
@@ -129,54 +125,45 @@
             background-color: #9a9a9a;
         }
 
-        @media (orientation: landscape) {
-            .content {
-                flex-direction: row;
-                flex-wrap: wrap;
-                align-items: center;
-                justify-content: space-around;
+        /* 화면 크기에 따른 반응형 조정 */
+        @media (max-height: 600px) {
+            .main-title, .instruction-text, .start-btn, .fullscreen-btn, #volume-display {
+                font-size: 1.5vh;
             }
 
-            .image-container {
-                order: 1;
-                width: 100%;
-                justify-content: center;
-            }
-
-            .main-title, .instruction-text, .controls {
-                order: 2;
-            }
-        }
-
-        @media (max-height: 500px) {
             .start-btn {
-                font-size: 2.5vh;
                 padding: 1vh 2vh;
             }
 
             .fullscreen-btn {
-                font-size: 1.5vh;
                 padding: 0.5vh 1vh;
             }
 
             #volume-slider {
-                width: 15vw;
+                width: 25vw;
             }
         }
 
-        @media (max-width: 600px) {
+        @media (max-width: 768px) {
+            .image-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
             .image-container img {
-                max-width: 80%;
+                max-width: 80%; /* 작은 화면에서는 이미지가 너무 작아지지 않도록 조정 */
+            }
+
+            .main-title, .instruction-text, .start-btn, .fullscreen-btn, #volume-display {
+                font-size: 2vh;
             }
 
             .start-btn {
-                font-size: 2.5vh;
-                padding: 1vh 2vh;
+                padding: 1.5vh 3vh;
             }
 
             .fullscreen-btn {
-                font-size: 1.5vh;
-                padding: 0.5vh 1vh;
+                padding: 1vh 2vh;
             }
 
             #volume-slider {
@@ -233,9 +220,9 @@
             if (!fullscreen) {
                 if (elem.requestFullscreen) {
                     elem.requestFullscreen();
-                } else if (elem.webkitRequestFullscreen) {
+                } else if (elem.webkitRequestFullscreen) { /* Safari */
                     elem.webkitRequestFullscreen();
-                } else if (elem.msRequestFullscreen) {
+                } else if (elem.msRequestFullscreen) { /* IE11 */
                     elem.msRequestFullscreen();
                 }
                 fullscreen = true;
@@ -243,9 +230,9 @@
             } else {
                 if (document.exitFullscreen) {
                     document.exitFullscreen();
-                } else if (document.webkitExitFullscreen) {
+                } else if (document.webkitExitFullscreen) { /* Safari */
                     document.webkitExitFullscreen();
-                } else if (document.msExitFullscreen) {
+                } else if (document.msExitFullscreen) { /* IE11 */
                     document.msExitFullscreen();
                 }
                 fullscreen = false;
