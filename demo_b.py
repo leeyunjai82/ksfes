@@ -74,9 +74,9 @@ async def talk(string, filepath, actions):
 #   await asyncio.sleep(0.1)
 #   print("[TTS]:", string)
   device.eye_on(random.randint(100,255),random.randint(100,255),random.randint(100,255))
-  # if actions != None:
-  #   motion_timer = Timer(0, motion.set_motion, args=(random.choice(actions),))
-  #   motion_timer.start()
+  if actions != None:
+    motion_timer = Timer(0, motion.set_motion, args=(random.choice(actions),))
+    motion_timer.start()
   audio.play(filepath, VOLUME, background=False)
   device.eye_off()
   await asyncio.sleep(0.5)
