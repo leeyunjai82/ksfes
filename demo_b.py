@@ -17,7 +17,6 @@ PLAY = False
 
 app = FastAPI()
 sio = SocketManager(app=app, cors_allowed_origins=[], mount_location="/ws/socket.io", socketio_path="")
-os.system('mkdir -p mp3')
 templates = Jinja2Templates(directory="templates")
 app.mount("/static", StaticFiles(directory="static"), name="static")
 
@@ -82,6 +81,7 @@ async def handle_touch_event():
 @app.on_event('startup')
 async def f():
   global audio, motion, device, speech
+  os.system('mkdir -p mp3')
   audio = Audio()
   motion = Motion()
   device = Device()
