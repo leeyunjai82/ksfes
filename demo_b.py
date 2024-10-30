@@ -27,6 +27,12 @@ async def f(request: Request):
 @app.on_event('startup')
 async def startup_event():
   print('startup')
+  global audio, motion, device, speech
+  os.system('mkdir -p mp3')
+  audio = Audio()
+  motion = Motion()
+  device = Device()
+  speech = Speech()  
   asyncio.create_task(touch_sensor_monitor())
 
 @app.sio.on('connect')
@@ -77,15 +83,6 @@ async def handle_touch_event():
   await asyncio.sleep(3)
   motion.set_motors([0,0,-70,-25,0,0,0,0,70,25], 2000)
   PLAY = False
-
-@app.on_event('startup')
-async def f():
-  global audio, motion, device, speech
-  os.system('mkdir -p mp3')
-  audio = Audio()
-  motion = Motion()
-  device = Device()
-  speech = Speech()
 
 if __name__ == "__main__":
   import uvicorn
