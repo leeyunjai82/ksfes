@@ -13,13 +13,13 @@
             margin: 0;
             padding: 0;
             color: #333;
-            overflow: hidden;
+            /* overflow: hidden; */ /* 스크롤을 허용하여 터치 가능하도록 수정 */
         }
 
         .content {
             text-align: center;
             width: 100vw;
-            height: 100vh;
+            min-height: 100vh;
             box-sizing: border-box;
             display: flex;
             flex-direction: column;
@@ -71,6 +71,8 @@
             flex-direction: column;
             align-items: center;
             gap: 20px;
+            position: relative;
+            z-index: 1; /* 컨트롤 영역을 상위에 배치 */
         }
 
         .volume-container {
@@ -100,6 +102,7 @@
             border-radius: 12px;
             cursor: pointer;
             transition: background-color 0.3s ease, transform 0.2s ease;
+            z-index: 2; /* 버튼을 상위에 배치 */
         }
 
         .start-btn:active {
@@ -120,6 +123,7 @@
             border-radius: 8px;
             cursor: pointer;
             transition: background-color 0.3s ease, transform 0.2s ease;
+            z-index: 2; /* 버튼을 상위에 배치 */
         }
 
         .fullscreen-btn:active {
@@ -218,7 +222,7 @@
                 }
                 fullscreen = true;
                 document.getElementById('fullscreen-btn').innerHTML = '❌ Exit Fullscreen';
-                document.body.style.overflow = 'hidden';
+                // document.body.style.overflow = 'hidden'; // 터치 이슈 방지를 위해 주석 처리
             } else {
                 if (document.exitFullscreen) {
                     document.exitFullscreen();
@@ -229,7 +233,7 @@
                 }
                 fullscreen = false;
                 document.getElementById('fullscreen-btn').innerHTML = '⛶ Fullscreen';
-                document.body.style.overflow = 'auto';
+                // document.body.style.overflow = 'auto'; // 터치 이슈 방지를 위해 주석 처리
             }
         }
     </script>
